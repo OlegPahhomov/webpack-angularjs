@@ -46,7 +46,12 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: ['file-loader?name=[name].[ext]&outputPath=/'],
+                use: ['file-loader?name=[name].[ext]&outputPath=html/'],
+                exclude: path.resolve(__dirname, 'src/index.html')
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-minify-loader',
                 exclude: path.resolve(__dirname, 'src/index.html')
             },
             {
@@ -98,6 +103,20 @@ module.exports = {
         new webpack.ProvidePlugin({
             angular: "angular",
         }),
+        new webpack.LoaderOptionsPlugin({
+            test: /\.html$/,
+            options: {
+                'html-minify-loader': {
+                    empty: true,        // KEEP empty attributes
+                    cdata: true,        // KEEP CDATA from scripts
+                    comments: true,     // KEEP comments
+                    dom: {                            // options of !(htmlparser2)[https://github.com/fb55/htmlparser2]
+                        lowerCaseAttributeNames: false,      // do not call .toLowerCase for each attribute name (Angular2 use camelCase attributes)
+                    }
+                }
+            },
+        })
     ]
 }
+
 ;
