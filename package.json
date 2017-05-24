@@ -36,6 +36,8 @@
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "angular": "^1.6.4"
+  },
   "description": ""
 }

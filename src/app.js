@@ -1,4 +1,8 @@
 import './app.scss';
 import './contacts.html';
+const angular = require('angular');
 
-console.log(123);
+import MainCtrl from './MainCtrl';
+
+angular.module('myApp', [])
+    .controller('mainCtrl', MainCtrl);

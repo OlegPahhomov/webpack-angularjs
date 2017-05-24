@@ -61,6 +61,10 @@ module.exports = {
                 test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
                 loader: 'imports-loader?jQuery=jquery'
             },
+            {
+                test: require.resolve('angular'),
+                loader: 'exports-loader?window.angular'
+            },
         ]
     },
     devServer: {
@@ -90,7 +94,10 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
-        new OptimizeCssAssetsPlugin()
+        new OptimizeCssAssetsPlugin(),
+        new webpack.ProvidePlugin({
+            angular: "angular",
+        }),
     ]
 }
 ;

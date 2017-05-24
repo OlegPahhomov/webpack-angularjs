@@ -5,7 +5,6 @@
     <title>Webpack App</title>
 </head>
 <body>
-<p id="root"></p>
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -52,6 +51,18 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+You either misspelled the module name or forgot to load it. If registering a module ensure that you specify the
+dependencies as the second argument.
+
+<div ng-app="myApp">
+    <div ng-controller="mainCtrl as vm">
+        <h1>Hello Meetup!</h1>
+        <label>Something:</label>
+        <input type="text" ng-model="vm.something">
+        <p>output: {{vm.something}}</p>
+        <a ng-click="vm.funcyFunction()">troll on mu nimi</a>
     </div>
 </div>
 
