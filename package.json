@@ -6,7 +6,9 @@
     "dev": "webpack-dev-server -d",
     "clean-prod": "npm run clean && NODE_ENV=production webpack -p",
     "prod": "NODE_ENV=production webpack -p",
-    "clean": "rimraf ./dist/* "
+    "clean": "rimraf ./dist/* ",
+    "webpack": "./node_modules/.bin/webpack",
+    "webpack-dev-server": "./node_modules/.bin/webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
