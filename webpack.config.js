@@ -21,12 +21,13 @@ const bootStrapConfig = isProd ? bootStrapEntryPoints.prod : bootStrapEntryPoint
 module.exports = {
     devtool: 'eval',
     entry: {
+        vendor: ["angular"],
         app: "./src/app.js",
         bootstrap: bootStrapConfig
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: "[name].bundle.js",
+        filename: "[name].bundle.[hash].js",
     },
     module: {
         rules: [
@@ -102,6 +103,10 @@ module.exports = {
         new OptimizeCssAssetsPlugin(),
         new webpack.ProvidePlugin({
             angular: "angular",
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+            minChunks: Infinity,
         }),
         new webpack.LoaderOptionsPlugin({
             test: /\.html$/,
